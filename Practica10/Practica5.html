@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Practica 5</title>
+		<meta name="author" content="" />
+		<meta charset="UTF-8" />
+<style>
+div
+{
+	width: 175px;
+	padding: 0.5px;
+	background: #FFFF33;
+	color: #FF3300;
+	text-align:center;
+}
+
+</style>
+    <script language="javascript">
+		function nick(valor)
+		{
+			if(valor=="")
+				document.getElementById('V.nick').style.display='';
+			else
+				document.getElementById('V.nick').style.display='none';
+		}	
+	
+		function email(valor)
+		{
+			  	if (/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/.test(valor))
+			   		document.getElementById('V.mail').style.display='none';
+				else
+				{
+			   		document.getElementById('V.mail').style.display='';
+					document.reg.mail.value="";
+				}
+		}
+
+		function check(valor)
+		{
+			if(valor!=document.reg.pass.value)
+			{
+				document.getElementById('V.pass2').style.display='';
+				document.reg.pass2.value="";
+			}
+			else
+				document.getElementById('V.pass2').style.display='none';
+		}
+
+		function check2(valor)
+		{
+			if(valor.length>=8)	
+				document.getElementById('V.pass').style.display='none';
+
+			else
+			{
+				document.getElementById('V.pass').style.display='';
+				document.reg.pass.value="";
+			}
+		}
+
+	</script>
+	</head>
+    <body>
+    	<h1>REGISTRO</h1>
+        	<form method="post" action="register1.html" name="reg">
+		<fieldset>
+        	       		<label for="nombre">NICK</label>
+			<input type="text" id="nombre" name="nombre" onClick="nick(this.value);" />
+			<div id="V.nick" style="display:none; background: #00CC33">
+            	<p>Campo Obligatorio</p>
+            </div>
+            <br />
+			<br />
+			<label for="mail">CORREO</label>
+			<input type="text" id="mail" name="mail" onChange="email(this.value);" />
+			<div id="V.mail" style="display:none;">
+            	<p>E-Mail no admitido</p>
+            </div>
+            <br />
+			<br />
+			<label for="pass">Ingresa tu contraseña</label>
+			<input type="password" id="pass" name="pass" onChange="check2(this.value)" />
+            <div id="V.pass" style="display:none;">
+            	<p>El Password debe contener minimo 8 caracteres</p>
+            </div>
+	 		<br />
+			<br />
+			<label for="pass2">Confirma tu contraseña</label>
+			<input type="password" id="pass2" name="pass2" onChange="check(this.value);" />
+             <div id="V.pass2" style="display:none;">
+            	<p>Intenta de nuevo</p>
+            </div>
+            <br />
+			<br />
+		</fieldset>
+	<button type="submit">ENVIAR</button>
+	</form>
+    </body>
+</html>
